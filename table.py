@@ -418,7 +418,7 @@ class Table:
                     join_table._insert(row_left+row_right)
                     found=True
             if not found:
-             for columns in range(table_right._no_of_columns)
+             for columns in range(table_right._no_of_columns):
              nulls.append("null")
              join_table._insert(row_left+nulls)
 
