@@ -419,7 +419,7 @@ class Table:
                     found=True
             if not found:
              for columns in range(table_right._no_of_columns):
-             nulls.append(None)
+             nulls.append(0)
              join_table._insert(row_left+nulls)
 
         print(f'## Select ops no. -> {no_of_ops}')
