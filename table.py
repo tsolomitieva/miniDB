@@ -456,10 +456,10 @@ class Table:
          # for each value in left column and right column, if condition, append the corresponding row to the new table
          for row_right in table_right.data:
              nulls.clear()
-             right_value = row_left[column_index_right]
+             right_value = row_right[column_index_right]
              found=False
              for row_left in self.data:
-                 left_value = row_right[column_index_self]
+                 left_value = row_left[column_index_self]
                  no_of_ops+=1
                  if get_op(operator, left_value, right_value): #EQ_OP
                      join_table._insert(row_left+row_right)
@@ -521,7 +521,7 @@ class Table:
                join_table._insert(row_left+nulls)
 
           for i in table_right.data:
-              for j in SameValues[j]:
+              for j in len(SameValues):
                   if SameValues[j]==i:
                       right=True
               if not right:
