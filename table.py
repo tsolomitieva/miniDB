@@ -379,7 +379,9 @@ class Table:
         self.__dict__.update(tmp_dict)
 
 
-    def _inner_join(self, table_right: Table, condition):
+
+
+    def _left_join(self, table_right: Table, condition):
         '''
         Join table (left) with a supplied table (right) where condition is met.
         '''
