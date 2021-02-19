@@ -534,8 +534,8 @@ class Table:
 
                if not found:
                 for columns in range(table_right._no_of_columns):
-                nulls.append(0)
-               join_table._insert(nulls+row_right)
+                 nulls.append(0)
+                join_table._insert(nulls+row_right)
 
           print(f'## Select ops no. -> {no_of_ops}')
           print(f'# Left table size -> {len(self.data)}')
