@@ -377,3 +377,4 @@ class Table:
         f.close()
 
         self.__dict__.update(tmp_dict)
+    #test
