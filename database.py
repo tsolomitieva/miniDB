@@ -584,7 +584,7 @@ class Database:
 
 
 
-def inner_join(self, left_table_name, right_table_name, condition, save_as=None, return_object=False):
+def left_join(self, left_table_name, right_table_name, condition, save_as=None, return_object=False):
 
     self.load(self.savedir)
     if self.is_locked(left_table_name) or self.is_locked(right_table_name):
