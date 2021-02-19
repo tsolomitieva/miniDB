@@ -582,21 +582,19 @@ class Database:
         f.close()
         return index
 
+    def left_join(self, left_table_name, right_table_name, condition, save_as=None, return_object=False):
+        
+        self.load(self.savedir)
+        if self.is_locked(left_table_name) or self.is_locked(right_table_name):
+            print(f'Table/Tables are currently locked')
+            return
 
-
-def _left_join(self, left_table_name, right_table_name, condition, save_as=None, return_object=False):
-
-    self.load(self.savedir)
-    if self.is_locked(left_table_name) or self.is_locked(right_table_name):
-        print(f'Table/Tables are currently locked')
-        return
-
-    res = self.tables[left_table_name]._left_join(self.tables[right_table_name], condition)
-    if save_as is not None:
-        res._name = save_as
-        self.table_from_object(res)
-    else:
-        if return_object:
-            return res
+        res = self.tables[left_table_name]._left_join(self.tables[right_table_name], condition)
+        if save_as is not None:
+            res._name = save_as
+            self.table_from_object(res)
         else:
-            res.show()
+            if return_object:
+                return res
+            else:
+                res.show()
