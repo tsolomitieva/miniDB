@@ -417,7 +417,8 @@ class Table:
                     join_table._insert(row_left+row_right)
                     found=True
             if not found:
-             join_table._insert(row_left)
+             row_right="null"
+             join_table._insert(row_left+row_right)
 
         print(f'## Select ops no. -> {no_of_ops}')
         print(f'# Left table size -> {len(self.data)}')
