@@ -405,9 +405,10 @@ class Table:
 
         # count the number of operations (<,> etc)
         no_of_ops = 0
-
+        nulls=[]
         # for each value in left column and right column, if condition, append the corresponding row to the new table
         for row_left in self.data:
+            nulls.clear()
             left_value = row_left[column_index_left]
             found=False
             for row_right in table_right.data:
@@ -417,8 +418,9 @@ class Table:
                     join_table._insert(row_left+row_right)
                     found=True
             if not found:
-             row_right="null"
-             join_table._insert(row_left+row_right)
+             for columns in range(table_right._no_of_columns)
+             nulls.append("null")
+             join_table._insert(row_left+nulls)
 
         print(f'## Select ops no. -> {no_of_ops}')
         print(f'# Left table size -> {len(self.data)}')
