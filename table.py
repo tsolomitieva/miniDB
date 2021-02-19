@@ -522,7 +522,7 @@ class Table:
 
           for i in table_right.data:
               for j in SameValues[j]:
-                  if SameValues[j]=i:
+                  if SameValues[j]==i:
                       right=True
            if not right:
               found=False
