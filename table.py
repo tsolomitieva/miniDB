@@ -428,7 +428,7 @@ class Table:
 
         return join_table
 
-     def _right_join(self, table_right: Table, condition):
+    def _right_join(self, table_right: Table, condition):
 
          # get columns and operator
          column_name_left, operator, column_name_right = self._parse_condition(condition, join=True)
