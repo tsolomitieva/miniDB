@@ -373,7 +373,7 @@ class Database:
         return_object -> If true, the result will be a table object (usefull for internal usage). Def: False (the result will be printed)
         '''
         self.load(self.savedir)
-         if self.is_locked(left_table_name) or self.is_locked(right_table_name):
+        if self.is_locked(left_table_name) or self.is_locked(right_table_name):
             print(f'Table/Tables are currently locked')
             return
 
