@@ -583,14 +583,14 @@ class Database:
         return index
 
 
-    def left_join(self, left_table_name, right_table_name, condition, save_as=None, return_object=False):
+    def left_outer_join(self, left_table_name, right_table_name, condition, save_as=None, return_object=False):
 
          self.load(self.savedir)
          if self.is_locked(left_table_name) or self.is_locked(right_table_name):
              print(f'Table/Tables are currently locked')
              return
 
-         res = self.tables[left_table_name]._left_join(self.tables[right_table_name], condition)
+         res = self.tables[left_table_name]._left_outer_join(self.tables[right_table_name], condition)
          if save_as is not None:
              res._name = save_as
              self.table_from_object(res)
@@ -600,19 +600,36 @@ class Database:
              else:
                  res.show()
 
-    def right_join(self, left_table_name, right_table_name, condition, save_as=None, return_object=False):
+     def right_outer_join(self, left_table_name, right_table_name, condition, save_as=None, return_object=False):
 
-          self.load(self.savedir)
-          if self.is_locked(left_table_name) or self.is_locked(right_table_name):
-              print(f'Table/Tables are currently locked')
-              return
+         self.load(self.savedir)
+         if self.is_locked(left_table_name) or self.is_locked(right_table_name):
+             print(f'Table/Tables are currently locked')
+             return
 
-          res = self.tables[left_table_name]._right_join(self.tables[right_table_name], condition)
-          if save_as is not None:
-              res._name = save_as
-              self.table_from_object(res)
-          else:
-              if return_object:
-                  return res
-              else:
-                  res.show()
+         res = self.tables[left_table_name]._right_outer_join(self.tables[right_table_name], condition)
+         if save_as is not None:
+             res._name = save_as
+             self.table_from_object(res)
+         else:
+             if return_object:
+                 return res
+             else:
+                 res.show()
+
+    def full_outer_join(self, left_table_name, right_table_name, condition, save_as=None, return_object=False):
+
+            self.load(self.savedir)
+            if self.is_locked(left_table_name) or self.is_locked(right_table_name):
+                print(f'Table/Tables are currently locked')
+                return
+
+            res = self.tables[left_table_name]._full_outer_join(self.tables[right_table_name], condition)
+            if save_as is not None:
+                res._name = save_as
+                self.table_from_object(res)
+            else:
+                if return_object:
+                    return res
+                else:
+                    res.show()
