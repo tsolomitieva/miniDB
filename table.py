@@ -461,11 +461,11 @@ class Table:
              for row_left in self.data:
                  left_value = row_left[column_index_left]
                  no_of_ops+=1
-                 if get_op(operator, left_value, right_value): #EQ_OP
+                 if get_op(operator, right_value, left_value): #EQ_OP
                      join_table._insert(row_left+row_right)
                      found=True
              if not found:
-              for columns in range(table_right._no_of_columns):
+              for columns in range(table_left._no_of_columns):
                 nulls.append(0)
               join_table._insert(nulls+row_right)
 
