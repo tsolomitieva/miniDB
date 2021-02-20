@@ -525,15 +525,7 @@ class Table:
                   if SameValues[j]==i:
                       right=True
               if not right:
-               found=False
-               right_value = row_right[column_index_right]
-               no_of_ops+=1
-               if get_op(operator, left_value, right_value): #EQ_OP
-                 join_table._insert(row_left+row_right)
-                 found=True
-
-               if not found:
-                for columns in range(table_right._no_of_columns):
+                for columns in range(self._no_of_columns):
                  nulls.append(0)
                 join_table._insert(nulls+row_right)
 
