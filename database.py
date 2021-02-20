@@ -633,3 +633,29 @@ class Database:
                     return res
                 else:
                     res.show()
+
+
+
+    def index_nested_loop_join(self, left_table_name, right_table_name, condition, save_as=None, return_object=False):
+
+             self.load(self.savedir)
+             if self.is_locked(left_table_name) or self.is_locked(right_table_name):
+                  print(f'Table/Tables are currently locked')
+                  return
+
+             if self._has_index(right_table_name):#if there is an index in the right table in pimary key
+              index_name = self.select('meta_indexes', '*', f'table_name=={right_table_name}', return_object=True).index_name[0]
+              index=self._load_idx(index_name)
+              res = self.tables[left_table_name]._index_nested_loop_join(self.tables[right_table_name], index, condition)
+              if save_as is not None:
+                  res._name = save_as
+                  self.table_from_object(res)
+              else:
+                  if return_object:
+                      return res
+                  else:
+                      res.show()
+
+             else:
+                  print(f'Error! Index not found.')
+                  return
