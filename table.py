@@ -520,11 +520,11 @@ class Table:
                  nulls.append(0)
                join_table._insert(row_left+nulls)
 
-          for i in table_right.data:
+          for row_right in table_right.data:
               right=False
               nulls.clear()
               for j in range(len(SameValues)):
-                  if SameValues[j]==i:
+                  if SameValues[j]==row_right:
                       right=True
               if not right:
                 for columns in range(self._no_of_columns):
