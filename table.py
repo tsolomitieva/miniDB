@@ -521,7 +521,7 @@ class Table:
                join_table._insert(row_left+nulls)
 
           for i in table_right.data:
-              for j in len(SameValues):
+              for j in range(len(SameValues)):
                   if SameValues[j]==i:
                       right=True
               if not right:
