@@ -502,7 +502,7 @@ class Table:
           no_of_ops = 0
           nulls=[]
           SameValues=[]
-          right=False
+          
           # for each value in left column and right column, if condition, append the corresponding row to the new table
           for row_left in self.data:
               nulls.clear()
@@ -521,6 +521,7 @@ class Table:
                join_table._insert(row_left+nulls)
 
           for i in table_right.data:
+              right=False
               for j in range(len(SameValues)):
                   if SameValues[j]==i:
                       right=True
