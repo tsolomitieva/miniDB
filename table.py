@@ -562,7 +562,7 @@ class Table:
            join_table_coltypes = self.column_types+table_right.column_types
            join_table = Table(name=join_table_name, column_names=join_table_colnames, column_types= join_table_coltypes)
 
-           for row_left in self.data;
+           for row_left in self.data:
             found=False
             left_value = row_left[column_index_left]
             row_right_index = index.find(operator, left_value)
