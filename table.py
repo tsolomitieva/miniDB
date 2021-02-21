@@ -570,7 +570,7 @@ class Table:
                 row_right = table_right.data[row_right_index[0]]
                 join_table._insert(row_left+row_right)
 
-        print(f'# Left table size -> {len(self.data)}')
-        print(f'# Right table size -> {len(table_right.data)}')
+           print(f'# Left table size -> {len(self.data)}')
+           print(f'# Right table size -> {len(table_right.data)}')
 
-        return join_table
+           return join_table
