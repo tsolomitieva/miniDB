@@ -422,6 +422,7 @@ class Table:
                nulls.append(0)
              join_table._insert(row_left+nulls)
 
+
         print(f'## Select ops no. -> {no_of_ops}')
         print(f'# Left table size -> {len(self.data)}')
         print(f'# Right table size -> {len(table_right.data)}')
@@ -538,6 +539,7 @@ class Table:
 
           return join_table
 
+
     def _index_nested_loop_join(self, table_right: Table, index, condition):
 
            # get columns and operator
@@ -561,4 +563,14 @@ class Table:
            join_table = Table(name=join_table_name, column_names=join_table_colnames, column_types= join_table_coltypes)
 
            for row_left in self.data;
-             left_value = row_left[column_index_left]
+            found=False
+            left_value = row_left[column_index_left]
+            row_right_index = index.find(operator, left_value)
+            if found:
+                row_right = table_right.data[row_right_index[0]]
+                join_table._insert(row_left+row_right)
+
+        print(f'# Left table size -> {len(self.data)}')
+        print(f'# Right table size -> {len(table_right.data)}')
+
+        return join_table
