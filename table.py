@@ -574,3 +574,45 @@ class Table:
            print(f'# Right table size -> {len(table_right.data)}')
 
            return join_table
+
+
+
+    def _sort_merge_join(self, table_right: Table, index, condition):
+
+           # get columns and operator
+           column_name_left, operator, column_name_right = self._parse_condition(condition, join=True)
+           # try to find both columns, if you fail raise error
+           try:
+               column_index_left = self.column_names.index(column_name_left)
+               column_index_right = table_right.column_names.index(column_name_right)
+           except:
+               raise Exception(f'Columns dont exist in one or both tables.')
+
+           # get the column names of both tables with the table name in front
+           # ex. for left -> name becomes left_table_name_name etc
+           left_names = [f'{self._name}_{colname}' for colname in self.column_names]
+           right_names = [f'{table_right._name}_{colname}' for colname in table_right.column_names]
+
+           # define the new tables name, its column names and types
+           join_table_name = f'{self._name}_sort_merge_join_{table_right._name}'
+           join_table_colnames = left_names+right_names
+           join_table_coltypes = self.column_types+table_right.column_types
+           join_table = Table(name=join_table_name, column_names=join_table_colnames, column_types= join_table_coltypes)
+
+           self._sort(column_name_left,asc=False)
+           table_right._sort(column_name_right,asc=False)
+
+           for row_left in self.data:
+
+            left_value = row_left[column_index_left]
+            while column_name_left<column_name_right in table_right.data:
+              if get_op(operator, right_value, left_value):
+
+
+                row_right = table_right.data[found[0]]
+                join_table._insert(row_left+row_right)
+
+           print(f'# Left table size -> {len(self.data)}')
+           print(f'# Right table size -> {len(table_right.data)}')
+
+           return join_table
