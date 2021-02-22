@@ -668,7 +668,7 @@ class Database:
               print(f'Table/Tables are currently locked')
               return
 
-            res = self.tables[left_table_name]._sort_merge_join(self.tables[right_table_name], condition , asc = asc)
+            res = self.tables[left_table_name]._sort_merge_join(self.tables[right_table_name], condition, asc = asc)
             if save_as is not None:
               res._name = save_as
               self.table_from_object(res)
