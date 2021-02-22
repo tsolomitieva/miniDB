@@ -563,11 +563,11 @@ class Table:
            join_table = Table(name=join_table_name, column_names=join_table_colnames, column_types= join_table_coltypes)
 
            for row_left in self.data:
-            found=False
+
             left_value = row_left[column_index_left]
-            row_right_index = index.find(operator, left_value)
+            found = index.find(operator, left_value)
             if found:
-                row_right = table_right.data[row_right_index]
+                row_right = table_right.data[found[0]]
                 join_table._insert(row_left+row_right)
 
            print(f'# Left table size -> {len(self.data)}')
