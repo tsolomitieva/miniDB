@@ -605,7 +605,7 @@ class Table:
            for row_left in self.data:
 
             left_value = row_left[column_index_left]
-            while column_name_left<column_name_right in table_right.data:
+            while column_name_left>column_name_right in table_right.data:
               if get_op(operator, right_value, left_value):
 
 
