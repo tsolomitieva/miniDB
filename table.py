@@ -609,7 +609,7 @@ class Table:
 
               right_value = row_right[column_index_right]
               if get_op(operator, right_value, left_value):
-                row_right = table_right.data[found[0]]
+                
                 join_table._insert(row_left+row_right)
               if column_name_left>column_name_right:
                   break
