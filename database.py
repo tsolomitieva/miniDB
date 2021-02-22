@@ -664,7 +664,7 @@ class Database:
     def sort_merge_join(self, left_table_name, right_table_name, condition, asc=False, save_as=None, return_object=False):
 
             self.load(self.savedir)
-        if self.is_locked(left_table_name) or self.is_locked(right_table_name):
+            if self.is_locked(left_table_name) or self.is_locked(right_table_name):
             print(f'Table/Tables are currently locked')
             return
 
