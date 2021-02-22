@@ -577,7 +577,7 @@ class Table:
 
 
 
-    def _sort_merge_join(self, table_right: Table, index, condition, asc = False):
+    def _sort_merge_join(self, table_right: Table, index, condition):
 
            # get columns and operator
            column_name_left, operator, column_name_right = self._parse_condition(condition, join=True)
