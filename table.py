@@ -567,7 +567,7 @@ class Table:
             left_value = row_left[column_index_left]
             row_right_index = index.find(operator, left_value)
             if found:
-                row_right = table_right.data[row_right_index[0]]
+                row_right = table_right.data[row_right_index]
                 join_table._insert(row_left+row_right)
 
            print(f'# Left table size -> {len(self.data)}')
