@@ -613,7 +613,7 @@ class Table:
               if get_op(operator, right_value, left_value):
                 join_table._insert(row_left+row_right)
               else:
-                  if asc=False:
+                  if asc==False:
                     if left_value>right_value:
                        break
                   else:#if asc=true
