@@ -606,7 +606,7 @@ class Table:
 
             left_value = row_left[column_index_left]
             for row_right in table_right.data:
-               no_of_ops +=1 
+              no_of_ops +=1 
               right_value = row_right[column_index_right]
               if get_op(operator, right_value, left_value):
 
