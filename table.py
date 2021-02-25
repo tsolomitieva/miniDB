@@ -578,7 +578,7 @@ class Table:
 
 
 
-    def _sort_merge_join(self, table_right: Table, condition):
+    def _sort_merge_join(self, table_right: Table, condition, asc):
 
            # get columns and operator
            column_name_left, operator, column_name_right = self._parse_condition(condition, join=True)
@@ -613,9 +613,12 @@ class Table:
               if get_op(operator, right_value, left_value):
                 join_table._insert(row_left+row_right)
               else:
-                if left_value>right_value:
-                  break
-
+                  if asc=False:
+                    if left_value>right_value:
+                       break
+                  else:#if asc=true
+                    if left_value<right_value:
+                        break
            print(f'## Select ops no. -> {no_of_ops}')
            print(f'# Left table size -> {len(self.data)}')
            print(f'# Right table size -> {len(table_right.data)}')
