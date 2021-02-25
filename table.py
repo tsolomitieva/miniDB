@@ -406,6 +406,7 @@ class Table:
         # count the number of operations (<,> etc)
         no_of_ops = 0
         nulls=[]
+        newrow=0
         # for each value in left column and right column, if condition, append the corresponding row to the new table
         for row_left in self.data:
             nulls.clear()
@@ -416,12 +417,14 @@ class Table:
                 no_of_ops+=1
                 if get_op(operator, left_value, right_value): #EQ_OP
                     join_table._insert(row_left+row_right)
+                    newrow+=1
                     found=True
             if not found:
              for columns in range(table_right._no_of_columns):
                nulls.append(0)
              join_table._insert(row_left+nulls)
-             join_table.data[row_left][column]='None'
+             newrow+=1
+             join_table.data[newrow][column]='None'
              join_table._update()
 
         print(f'## Select ops no. -> {no_of_ops}')
