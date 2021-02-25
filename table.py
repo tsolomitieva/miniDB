@@ -601,8 +601,8 @@ class Table:
            join_table_coltypes = self.column_types+table_right.column_types
            join_table = Table(name=join_table_name, column_names=join_table_colnames, column_types= join_table_coltypes)
 
-           self._sort(column_name_left,asc=False)
-           table_right._sort(column_name_right,asc=False)
+           self._sort(column_name_left,asc=asc)
+           table_right._sort(column_name_right,asc=asc)
 
            for row_left in self.data:
 
