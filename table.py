@@ -421,7 +421,7 @@ class Table:
              for columns in range(table_right._no_of_columns):
                nulls.append(0)
              join_table._insert(row_left+nulls)
-             join table.data[row_left][column]='None'
+             join_able.data[row_left][column]='None'
              join_table._update()
 
         print(f'## Select ops no. -> {no_of_ops}')
