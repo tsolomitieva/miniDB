@@ -553,6 +553,7 @@ class Table:
 
            # get the column names of both tables with the table name in front
            # ex. for left -> name becomes left_table_name_name etc
+           no_of_ops = 0
            left_names = [f'{self._name}_{colname}' for colname in self.column_names]
            right_names = [f'{table_right._name}_{colname}' for colname in table_right.column_names]
 
@@ -606,7 +607,7 @@ class Table:
 
             left_value = row_left[column_index_left]
             for row_right in table_right.data:
-              no_of_ops +=1 
+              no_of_ops +=1
               right_value = row_right[column_index_right]
               if get_op(operator, right_value, left_value):
 
