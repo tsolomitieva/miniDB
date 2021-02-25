@@ -607,14 +607,11 @@ class Table:
            for row_left in self.data:
 
             left_value = row_left[column_index_left]
-            for row_right in table_right.data:
+            while right_value[column_index_right]<=left_value in table_right.data:
               no_of_ops +=1
-              right_value = row_right[column_index_right]
               if get_op(operator, right_value, left_value):
                 join_table._insert(row_left+row_right)
-              else:
-                if right_value>left_value:
-                   break
+
            print(f'## Select ops no. -> {no_of_ops}')
            print(f'# Left table size -> {len(self.data)}')
            print(f'# Right table size -> {len(table_right.data)}')
