@@ -613,9 +613,9 @@ class Table:
               if get_op(operator, right_value, left_value):
                 join_table._insert(row_left+row_right)
               else:
-                if right_value>left_value:
+                if left_value>right_value:
                   break
-            continue
+
            print(f'## Select ops no. -> {no_of_ops}')
            print(f'# Left table size -> {len(self.data)}')
            print(f'# Right table size -> {len(table_right.data)}')
